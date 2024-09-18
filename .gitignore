@@ -1,0 +1,51 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Log files
+*.log
+
+# SQLite database files
+*.sqlite
+*.sqlite3
+dev.sqlite3
+
+# Build directories
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Knex migration and seed files (optional, if you don't want to commit them)
+migrations/
+seeds/
+
+# NPM package lock file (optional, if you prefer not to commit it)
+package-lock.json
+
+# Elasticsearch configuration (if you have local configuration files)
+elasticsearch.yml
+
+# Coverage directory used by coverage tools
+coverage/
+
+# Files created by your editor
+*.swp
+*.swo
+
+# Others
+*.lock
