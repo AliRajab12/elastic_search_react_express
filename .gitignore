@@ -31,7 +31,6 @@ Thumbs.db
 .idea/
 
 # Knex migration and seed files (optional, if you don't want to commit them)
-migrations/
 seeds/
 
 # NPM package lock file (optional, if you prefer not to commit it)

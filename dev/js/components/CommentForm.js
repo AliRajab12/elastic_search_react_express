@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const CommentForm = ({ onAddComment, onCommentAdded }) => {
+const CommentForm = ({ onAddComment,  }) => {
   const [comment, setComment] = useState('');
 
   const handleSubmit = async (e) => {
@@ -10,7 +10,6 @@ const CommentForm = ({ onAddComment, onCommentAdded }) => {
       try {
         await onAddComment(comment); // Add the comment
         setComment(''); // Clear the input field
-        onCommentAdded(); // Notify parent to refresh comments
       } catch (error) {
         console.error('Error adding comment:', error);
       }

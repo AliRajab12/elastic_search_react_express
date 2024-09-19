@@ -5,7 +5,9 @@ import Footer from "./components/common/Footer";
 import NavigationBar from "./components/common/Navbar";
 import CommentForm from "./components/CommentForm";
 import CommentList from "./components/CommentList";
+import ClearCommentsButton from './components/ClearCommentsButton'; // Import the new component
 import { Container, Row, Col } from "react-bootstrap";
+import SearchComponent from './components/SearchComponent';
 
 const App = () => {
   const [comments, setComments] = useState([]);
@@ -27,6 +29,7 @@ const App = () => {
     fetchComments();
   }, [fetchComments]);
 
+  // Function to add a comment
   const addComment = async (newComment) => {
     try {
       const response = await fetch('/api/comments', {
@@ -48,11 +51,29 @@ const App = () => {
     }
   };
 
+  // Function to clear all comments
+  const clearComments = async () => {
+    try {
+      const response = await fetch('/api/comments', {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Error clearing comments');
+      }
+
+      fetchComments(); // Refresh comments after clearing
+    } catch (error) {
+      console.error('Error clearing comments:', error);
+    }
+  };
+
   return (
     <div>
       <NavigationBar />
 
       <Container style={{ marginTop: '80px' }}>
+      <SearchComponent/>
         <Row>
           <Col md={6}>
             <h3>Add a Comment</h3>
@@ -61,10 +82,14 @@ const App = () => {
           <Col md={6}>
             <h3>Comments</h3>
             <CommentList comments={comments} />
+            {/* Clear Button Component */}
+            <ClearCommentsButton 
+              onClearComments={clearComments} 
+              commentsCount={comments.length} 
+            />
           </Col>
         </Row>
       </Container>
-
       <Footer />
     </div>
   );
